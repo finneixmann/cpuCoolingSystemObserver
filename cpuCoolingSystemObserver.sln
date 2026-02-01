@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolingObserver", "CoolingObserver\CoolingObserver.csproj", "{F2DC183A-A3CB-4563-9E48-67794E29938E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolingObserverWPF", "CoolingObserverWPF\CoolingObserverWPF.csproj", "{07A65D24-C242-78C6-F828-F024A91BAC66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,15 +10,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F2DC183A-A3CB-4563-9E48-67794E29938E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F2DC183A-A3CB-4563-9E48-67794E29938E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F2DC183A-A3CB-4563-9E48-67794E29938E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F2DC183A-A3CB-4563-9E48-67794E29938E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07A65D24-C242-78C6-F828-F024A91BAC66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07A65D24-C242-78C6-F828-F024A91BAC66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07A65D24-C242-78C6-F828-F024A91BAC66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07A65D24-C242-78C6-F828-F024A91BAC66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {62346A70-A6CB-447D-AE9E-07A36EFC30DB}
+		SolutionGuid = {DB072695-B4FD-40BE-8B60-33A0062387FA}
 	EndGlobalSection
 EndGlobal

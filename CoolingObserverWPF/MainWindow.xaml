@@ -1,0 +1,52 @@
+﻿<Window x:Class="CoolingObserverWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoolingObserverWPF"
+        mc:Ignorable="d"
+        Title="CoolSysObserver"
+        Height="720"
+        Width="1080">
+    <Grid Background="#222222">
+        <Grid Margin="20">
+            <ToggleButton x:Name="Toggle_greenLED"
+                          Width="100"
+                          Height="50"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Checked="Toggle_greenLED_Checked"
+                          Unchecked="Toggle_greenLED_Unchecked">
+                <ToggleButton.Style>
+                    <Style TargetType="ToggleButton">
+                        <Setter Property="Background"
+                                Value="LightGray"/>
+                        <Setter Property="Foreground"
+                                Value="Black"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="Green"/>
+                                <Setter Property="Foreground"
+                                        Value="Black"/>
+                                <Setter Property="Content"
+                                        Value="LED on"/>
+
+                            </Trigger>
+                            <Trigger Property="IsChecked"
+                                     Value="False">
+                                <Setter Property="Background"
+                                        Value="Black"/>
+                                <Setter Property="Foreground"
+                                        Value="Red"/>
+                                <Setter Property="Content"
+                                        Value="LED off"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToggleButton.Style>
+            </ToggleButton>
+        </Grid>
+    </Grid>
+</Window>
