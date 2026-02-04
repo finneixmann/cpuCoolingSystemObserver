@@ -36,14 +36,9 @@ namespace CoolingObserverWPF
 
         }
 
-        private void Toggle_greenLED_Checked(object sender, RoutedEventArgs e)
-        {
-            controller.SetTestLED(true);
-        }
-
-        private void Toggle_greenLED_Unchecked(object sender, RoutedEventArgs e)
-        {
-            controller.SetTestLED(false);
-        }
+        private void Toggle_greenLED_Checked(object sender, RoutedEventArgs e) => controller.SetTestLED(true);
+        private void Toggle_greenLED_Unchecked(object sender, RoutedEventArgs e) => controller.SetTestLED(false);
+        private void Toggle_ledStrip_Checked(object sender, RoutedEventArgs e) => controller.SetLEDStrip(false);
+        private void Toggle_ledStrip_Unchecked(object sender, RoutedEventArgs e) => controller.SetLEDStrip(false);
     }
 }

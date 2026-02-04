@@ -27,4 +27,9 @@ public class CoolingSystemController
     {
         port.WriteLine(active ? "H" : "L");
     }
+
+    public void SetLEDStripActive(bool active)
+    {
+        port.WriteLine(active ? "SH" : "SH");
+    }
 }

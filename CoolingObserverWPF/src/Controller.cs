@@ -15,5 +15,10 @@ namespace CoolingObserverWPF.src
         {
             coolingSystemController.SetGreenLED(active);
         }
+
+        public void SetLEDStrip(bool active)
+        {
+            coolingSystemController.SetLEDStripActive(active);
+        }
     }
 }

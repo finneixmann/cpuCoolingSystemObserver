@@ -10,43 +10,135 @@
         Width="1080">
     <Grid Background="#222222">
         <Grid Margin="20">
-            <ToggleButton x:Name="Toggle_greenLED"
-                          Width="100"
-                          Height="50"
-                          HorizontalAlignment="Left"
-                          VerticalAlignment="Top"
-                          Checked="Toggle_greenLED_Checked"
-                          Unchecked="Toggle_greenLED_Unchecked">
-                <ToggleButton.Style>
-                    <Style TargetType="ToggleButton">
-                        <Setter Property="Background"
-                                Value="LightGray"/>
-                        <Setter Property="Foreground"
-                                Value="Black"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsChecked"
-                                     Value="True">
-                                <Setter Property="Background"
-                                        Value="Green"/>
-                                <Setter Property="Foreground"
-                                        Value="Black"/>
-                                <Setter Property="Content"
-                                        Value="LED on"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Cooling Sys Observer"
+                       Grid.Row="0"
+                       FontSize="24"
+                       Foreground="White"/>
+            <Border BorderBrush="Black"
+                    Grid.Row="1"
+                    BorderThickness="2"
+                    Padding="10"
+                    CornerRadius="5">
 
-                            </Trigger>
-                            <Trigger Property="IsChecked"
-                                     Value="False">
+                <!-- TOGGLE LED-Strip -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ToggleButton x:Name="Toggle_greenLED"
+                                  Grid.Column="0"
+                                  Width="100"
+                                  Height="30"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top"
+                                  Checked="Toggle_greenLED_Checked"
+                                  Unchecked="Toggle_greenLED_Unchecked">
+                        <ToggleButton.Style>
+                            <Style TargetType="ToggleButton">
                                 <Setter Property="Background"
-                                        Value="Black"/>
+                                        Value="LightGray"/>
                                 <Setter Property="Foreground"
-                                        Value="Red"/>
-                                <Setter Property="Content"
-                                        Value="LED off"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ToggleButton.Style>
-            </ToggleButton>
+                                        Value="Black"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsChecked"
+                                             Value="True">
+                                        <Setter Property="Background"
+                                                Value="Green"/>
+                                        <Setter Property="Foreground"
+                                                Value="Black"/>
+                                        <Setter Property="Content"
+                                                Value="LED on"/>
+
+                                    </Trigger>
+                                    <Trigger Property="IsChecked"
+                                             Value="False">
+                                        <Setter Property="Background"
+                                                Value="Black"/>
+                                        <Setter Property="Foreground"
+                                                Value="Red"/>
+                                        <Setter Property="Content"
+                                                Value="LED off"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ToggleButton.Style>
+                    </ToggleButton>
+                    <TextBlock Text="Toggle the green test LED"
+                               Grid.Column="1"
+                               Margin="10,0,0,0"
+                               Foreground="Gray"
+                               VerticalAlignment="Center"
+                               FontSize="16"/>
+                </Grid>
+
+
+            </Border>
+
+            <Border
+                BorderBrush="Black"
+                Grid.Row="2"
+                BorderThickness="2"
+                Padding="10"
+                CornerRadius="5">
+                <!-- TOGGLE LED-Strip -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ToggleButton x:Name="Toggle_ledStrip"
+                                  Grid.Column="0"
+                                  Width="100"
+                                  Height="30"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top"
+                                  Checked="Toggle_ledStrip_Checked"
+                                  Unchecked="Toggle_ledStrip_Unchecked">
+                        <ToggleButton.Style>
+                            <Style TargetType="ToggleButton">
+                                <Setter Property="Background"
+                                        Value="LightGray"/>
+                                <Setter Property="Foreground"
+                                        Value="Black"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsChecked"
+                                             Value="True">
+                                        <Setter Property="Background"
+                                                Value="Green"/>
+                                        <Setter Property="Foreground"
+                                                Value="Black"/>
+                                        <Setter Property="Content"
+                                                Value="Strip on"/>
+
+                                    </Trigger>
+                                    <Trigger Property="IsChecked"
+                                             Value="False">
+                                        <Setter Property="Background"
+                                                Value="Black"/>
+                                        <Setter Property="Foreground"
+                                                Value="Red"/>
+                                        <Setter Property="Content"
+                                                Value="Strip off"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ToggleButton.Style>
+                    </ToggleButton>
+                    <TextBlock Text="Toggle the LED-Strip"
+                               Grid.Column="1"
+                               Margin="10,0,0,0"
+                               Foreground="Gray"
+                               VerticalAlignment="Center"
+                               FontSize="16"/>
+                </Grid>
+            </Border>
+
         </Grid>
     </Grid>
 </Window>
