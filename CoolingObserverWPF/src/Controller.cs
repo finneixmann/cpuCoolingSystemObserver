@@ -4,12 +4,17 @@ using System.Security.RightsManagement;
 namespace CoolingObserverWPF.src {
     public class Controller {
         private CoolingSystemController coolingSystemController;
+        private CpuObserver cpuObserver;
         public View view;
 
         public Controller(MainWindow mainWindow) {
-            Console.WriteLine("Controller initialized!");
-            view = new View(mainWindow);
-            coolingSystemController = new CoolingSystemController(controller: this);
+            this.view = new View(mainWindow);
+            this.cpuObserver = new CpuObserver(this);
+            this.coolingSystemController = new CoolingSystemController(controller: this);
+
+            if (!cpuObserver.IsAuthorized) {
+                view.SetCpuTemp(-1);
+            }
         }
 
         public void SetTestLED(bool active) {
@@ -35,8 +40,14 @@ namespace CoolingObserverWPF.src {
             }
 
             public void Log(string message) {
-                mainWindow.Log(message);
+                mainWindow.Log(message.Trim());
             }
+
+            public void SetRadiatorLevel(float level, bool eco) => mainWindow.SetRadiatorLevel(level, eco);
+            public void SetPump1Level(float level, bool eco) => mainWindow.SetPump1Level(level, eco);
+            public void SetPump2Level(float level, bool eco) => mainWindow.SetPump2Level(level, eco);
+            public void SetCoolantTankTemperature(int temp) => mainWindow.SetCoolantTankTemperature(temp);
+            public void SetCpuTemp(int temp) => mainWindow.SetCpuTemp(temp);
         }
     }
 }

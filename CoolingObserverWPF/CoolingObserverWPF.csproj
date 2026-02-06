@@ -7,8 +7,16 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <!-- Images automatisch in den Output kopieren -->
+  <ItemGroup>
+    <Content Include="Images\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="System.IO.Ports" Version="10.0.2" />
+    <PackageReference Include="System.Management" Version="10.0.2" />
   </ItemGroup>
 
 </Project>
