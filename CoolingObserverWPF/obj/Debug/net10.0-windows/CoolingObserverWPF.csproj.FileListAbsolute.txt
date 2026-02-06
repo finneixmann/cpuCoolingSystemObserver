@@ -82,3 +82,12 @@ E:\Finn Eixmann\26Elemetns\Projects\CPUCooler\cpuCoolingSystemObserver\CoolingOb
 E:\Finn Eixmann\26Elemetns\Projects\CPUCooler\cpuCoolingSystemObserver\CoolingObserverWPF\obj\Debug\net10.0-windows\CoolingObserverWPF.pdb
 E:\Finn Eixmann\26Elemetns\Projects\CPUCooler\cpuCoolingSystemObserver\CoolingObserverWPF\obj\Debug\net10.0-windows\CoolingObserverWPF.genruntimeconfig.cache
 E:\Finn Eixmann\26Elemetns\Projects\CPUCooler\cpuCoolingSystemObserver\CoolingObserverWPF\obj\Debug\net10.0-windows\ref\CoolingObserverWPF.dll
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Debug\net10.0-windows\Images\coolant_tank.png
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Debug\net10.0-windows\Images\coolant_tank_filling.png
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Debug\net10.0-windows\Images\cool_cycle.png
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Debug\net10.0-windows\Images\cool_cycle_filling.png
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Debug\net10.0-windows\Images\fan_rotor.png
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Debug\net10.0-windows\Images\led_strip.png
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Debug\net10.0-windows\Images\pump_cpu.png
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Debug\net10.0-windows\Images\pump_radiator.png
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\obj\Debug\net10.0-windows\CoolingObserverWPF_Content.g.cs

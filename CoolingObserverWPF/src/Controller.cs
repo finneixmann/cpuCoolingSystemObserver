@@ -35,8 +35,13 @@ namespace CoolingObserverWPF.src {
             }
 
             public void Log(string message) {
-                mainWindow.Log(message);
+                mainWindow.Log(message.Trim());
             }
+
+            public void SetRadiatorLevel(float level, bool eco) => mainWindow.SetRadiatorLevel(level, eco);
+            public void SetPump1Level(float level, bool eco) => mainWindow.SetPump1Level(level, eco);
+            public void SetPump2Level(float level, bool eco) => mainWindow.SetPump2Level(level, eco);
+            public void SetCoolantTankTemperature(int temp) => mainWindow.SetCoolantTankTemperature(temp);
         }
     }
 }

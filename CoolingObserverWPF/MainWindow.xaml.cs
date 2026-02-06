@@ -59,10 +59,24 @@ namespace CoolingObserverWPF {
         private void Toggle_ledStrip_Unchecked(object sender, RoutedEventArgs e) => controller.SetLEDStrip(false);
 
         public void SetRadiatorLevel(float level, bool eco) {
-            TXT_radiator.Text = $"{level * 100}%{Environment.NewLine}[{(eco ? "ECO" : "BLAST")}]{Environment.NewLine}RADIATOR";
+            TXT_radiator.Dispatcher.Invoke(() => {
+                TXT_radiator.Text = $"{level * 100}%{Environment.NewLine}[{(eco ? "ECO" : "BLAST")}]{Environment.NewLine}RADIATOR";
+            });
         }
         public void SetPump1Level(float level, bool eco) {
-            TXT_pump1.Text = $"{level * 100}%{Environment.NewLine}[{(eco ? "ECO" : "BLAST")}]{Environment.NewLine}PUMP 1";
+            TXT_pump1.Dispatcher.Invoke(() => {
+                TXT_pump1.Text = $"{level * 100}%{Environment.NewLine}[{(eco ? "ECO" : "BLAST")}]{Environment.NewLine}PUMP 1";
+            });
+        }
+        public void SetPump2Level(float level, bool eco) {
+            TXT_pump2.Dispatcher.Invoke(() => {
+                TXT_pump2.Text = $"{level * 100}%{Environment.NewLine}[{(eco ? "ECO" : "BLAST")}]{Environment.NewLine}PUMP 2";
+            });
+        }
+        public void SetCoolantTankTemperature(int temp) {
+            TXT_coolant_tank.Dispatcher.Invoke(() => {
+                TXT_coolant_tank.Text = $"{temp}C{Environment.NewLine}COOLANT TANK";
+            });
         }
 
 
@@ -76,8 +90,10 @@ namespace CoolingObserverWPF {
         }
 
         public void Log(string message) {
-            TerminalOutput.Text += message + Environment.NewLine;
-            TerminalOutput.ScrollToEnd();
+            TerminalOutput.Dispatcher.Invoke(() => {
+                TerminalOutput.Text += $"[{DateTime.Now:mm:ss}] {message}{Environment.NewLine}";
+                TerminalOutput.ScrollToEnd();
+            });
         }
     }
 }

@@ -12,7 +12,7 @@
     <Grid Background="#111111">
         <Grid Margin="20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -49,9 +49,9 @@
                     <!-- FAN ROTOR IMAGE -->
                     <Image x:Name="IMG_fan_rotor"
                            Grid.Column="0"
-                           Source="E:\Finn Eixmann\26Elemetns\Projects\CPUCooler\cpuCoolingSystemObserver\CoolingObserverWPF\resources\fan_rotor.png"
-                           Width="200"
-                           Height="200"/>
+                           Source="Images\fan_rotor.png"
+                           Width="159"
+                           Height="150"/>
 
                     <!-- STATUS TEXT-->
                     <StackPanel Grid.Column="1"
@@ -158,8 +158,130 @@
                 </Grid>
             </Border>
 
+
+
+            <!-- COOLING CYCLE-->
+            <TextBlock Text="COOLING CYCLE"
+                       Grid.Row="4"
+                       FontSize="10"
+                       Margin="0,0,0,0"
+                       Foreground="White"/>
+            <Border
+                BorderBrush="White"
+                Grid.Row="5"
+                Margin="0,0,0,10"
+                BorderThickness="1"
+                Padding="10"
+                CornerRadius="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- CYCLE LAYOUT -->
+                    <Image x:Name="IMG_cooling_cycle"
+                           Grid.Column="0"
+                           Source="Images\cool_cycle.png"
+                           Width="1080"
+                           Height="300"/>
+
+                    <!-- COOLANT FILLING -->
+                    <Rectangle Width="139"
+                               Height="220"
+                               Opacity=".2"
+                               Fill="Blue">
+                        <Rectangle.RenderTransform>
+                            <TranslateTransform Y="12"/>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
+
+                    <!-- RADIATOR TEXT -->
+                    <TextBlock x:Name="TXT_radiator"
+                               Margin="10,0,0,10"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Foreground="White"
+                               FontSize="16">
+                        35%<LineBreak/>
+                        [ECO]<LineBreak/>
+                        RADIATOR<LineBreak/>
+                        <TextBlock.RenderTransform>
+                            <TranslateTransform X="-480"
+                                                Y="48"/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+
+                    <!-- PUMP1 TEXT -->
+                    <TextBlock x:Name="TXT_pump1"
+                               Margin="10,0,0,10"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Foreground="White"
+                               FontSize="10">
+                        20%<LineBreak/>
+                        PUMP1<LineBreak/>
+                        <TextBlock.RenderTransform>
+                            <TranslateTransform X="-269"
+                                                Y="62"/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+
+                    <!-- COOLANT TANK TEXT -->
+                    <TextBlock x:Name="TXT_coolant_tank"
+                               Margin="10,0,0,10"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Foreground="White"
+                               FontSize="16">
+                        40℃<LineBreak/>
+                        COOLANT TANK<LineBreak/>
+                        <TextBlock.RenderTransform>
+                            <TranslateTransform X="-12"
+                                                Y="115"/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+
+                    <!-- PUMP2 TEXT -->
+                    <TextBlock x:Name="TXT_pump2"
+                               Margin="10,0,0,10"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Foreground="White"
+                               FontSize="11">
+                        22%<LineBreak/>
+                        PUMP2<LineBreak/>
+                        <TextBlock.RenderTransform>
+                            <TranslateTransform X="197"
+                                                Y="-42"/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+
+                    <!-- CPU TEXT -->
+                    <TextBlock x:Name="TXT_cpu"
+                               Margin="10,0,0,10"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Foreground="White"
+                               FontSize="16">
+                        63℃<LineBreak/>
+                        CPU<LineBreak/>
+                        <TextBlock.RenderTransform>
+                            <TranslateTransform X="432"
+                                                Y="44"/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+
+                </Grid>
+            </Border>
+
+
             <!-- LED CONTROL & TERMINAL  -->
-            <Grid Grid.Row="4">
+            <Grid Grid.Row="6">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -194,7 +316,7 @@
                             <!-- LED STRIP IMAGE -->
                             <Image x:Name="IMG_led_strip"
                                    Grid.Column="0"
-                                   Source="E:\Finn Eixmann\26Elemetns\Projects\CPUCooler\cpuCoolingSystemObserver\CoolingObserverWPF\resources\led_strip.png"
+                                   Source="Images/led_strip.png"
                                    Width="200"
                                    Height="150"/>
 
@@ -347,6 +469,7 @@
                                      VerticalScrollBarVisibility="Auto"
                                      TextWrapping="Wrap"
                                      AcceptsReturn="True"
+                                     Height="100"
                                      Padding="5"/>
 
                             <!-- COMMAND LINE -->
@@ -361,126 +484,6 @@
                     </Border>
                 </Grid>
             </Grid>
-
-
-            <!-- COOLING CYCLE-->
-            <TextBlock Text="COOLING CYCLE"
-                       Grid.Row="5"
-                       FontSize="10"
-                       Margin="0,0,0,0"
-                       Foreground="White"/>
-            <Border
-                BorderBrush="White"
-                Grid.Row="6"
-                Margin="0,0,0,10"
-                BorderThickness="1"
-                Padding="10"
-                CornerRadius="0">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!-- CYCLE LAYOUT -->
-                    <Image x:Name="IMG_cooling_cycle"
-                           Grid.Column="0"
-                           Source="E:\Finn Eixmann\26Elemetns\Projects\CPUCooler\cpuCoolingSystemObserver\CoolingObserverWPF\resources\cool_cycle.png"
-                           Width="1080"
-                           Height="300"/>
-
-                    <!-- COOLANT FILLING -->
-                    <Rectangle Width="139"
-                               Height="220"
-                               Opacity=".2"
-                               Fill="Blue">
-                        <Rectangle.RenderTransform>
-                            <TranslateTransform Y="12"/>
-                        </Rectangle.RenderTransform>
-                    </Rectangle>
-
-                    <!-- RADIATOR TEXT -->
-                    <TextBlock x:Name="TXT_radiator"
-                               Margin="10,0,0,10"
-                               Grid.Column="0"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               Foreground="White"
-                               FontSize="16">
-                        35%<LineBreak/>
-                        [ECO]<LineBreak/>
-                        RADIATOR<LineBreak/>
-                        <TextBlock.RenderTransform>
-                            <TranslateTransform X="-480"
-                                                Y="48"/>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-
-                    <!-- PUMP1 TEXT -->
-                    <TextBlock x:Name="TXT_pump1"
-                               Margin="10,0,0,10"
-                               Grid.Column="0"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               Foreground="White"
-                               FontSize="10">
-                        20%<LineBreak/>
-                        PUMP1<LineBreak/>
-                        <TextBlock.RenderTransform>
-                            <TranslateTransform X="-269"
-                                                Y="62"/>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-
-                    <!-- COOLANT TANK TEXT -->
-                    <TextBlock x:Name="TXT_coolant_tank"
-                               Margin="10,0,0,10"
-                               Grid.Column="0"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               Foreground="White"
-                               FontSize="16">
-                        40℃<LineBreak/>
-                        COOLANT TANK<LineBreak/>
-                        <TextBlock.RenderTransform>
-                            <TranslateTransform X="-12"
-                                                Y="115"/>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-
-                    <!-- PUMP2 TEXT -->
-                    <TextBlock x:Name="TXT_pump2"
-                               Margin="10,0,0,10"
-                               Grid.Column="0"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               Foreground="White"
-                               FontSize="11">
-                        22%<LineBreak/>
-                        PUMP2<LineBreak/>
-                        <TextBlock.RenderTransform>
-                            <TranslateTransform X="197"
-                                                Y="-42"/>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-
-                    <!-- CPU TEXT -->
-                    <TextBlock x:Name="TXT_cpu"
-                               Margin="10,0,0,10"
-                               Grid.Column="0"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               Foreground="White"
-                               FontSize="16">
-                        63℃<LineBreak/>
-                        CPU<LineBreak/>
-                        <TextBlock.RenderTransform>
-                            <TranslateTransform X="432"
-                                                Y="44"/>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-
-                </Grid>
-            </Border>
         </Grid>
     </Grid>
 </Window>
