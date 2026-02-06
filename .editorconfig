@@ -1,0 +1,10 @@
+root = true
+
+[*.cs]
+
+# Klammern nicht in neue Zeile
+csharp_new_line_before_open_brace = none
+
+# Optional: kompakter Stil
+csharp_preserve_single_line_statements = true
+csharp_preserve_single_line_blocks = true

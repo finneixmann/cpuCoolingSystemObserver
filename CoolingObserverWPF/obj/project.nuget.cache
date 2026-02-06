@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QIBRVT7Jan8=",
+  "dgSpecHash": "9toTbsJFEGQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\finne\\OneDrive\\Desktop\\Finn Eixmann\\WaterCoolingProject\\programs\\observer\\cpuCoolingSystemObserver\\CoolingObserverWPF\\CoolingObserverWPF.csproj",
+  "projectFilePath": "E:\\Finn Eixmann\\26Elemetns\\Projects\\CPUCooler\\cpuCoolingSystemObserver\\CoolingObserverWPF\\CoolingObserverWPF.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\finne\\.nuget\\packages\\runtime.android-arm.runtime.native.system.io.ports\\10.0.2\\runtime.android-arm.runtime.native.system.io.ports.10.0.2.nupkg.sha512",
     "C:\\Users\\finne\\.nuget\\packages\\runtime.android-arm64.runtime.native.system.io.ports\\10.0.2\\runtime.android-arm64.runtime.native.system.io.ports.10.0.2.nupkg.sha512",
