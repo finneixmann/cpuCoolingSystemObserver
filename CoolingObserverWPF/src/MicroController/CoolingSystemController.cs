@@ -17,6 +17,7 @@ public class CoolingSystemController {
         _isConnected = false;
         try {
             port = new SerialPort("COM3", 9600);
+            port.DataReceived += Port_DataReceived;
             port.Open();
             _isConnected = true;
             controller.view.Log("> Connected to CSCU on COM3");
@@ -25,6 +26,12 @@ public class CoolingSystemController {
             controller.view.ShowMessage("Failed to connect to Cooling System Controller: " + ex.Message);
             controller.view.Log("> Failed to connect to CSCU on COM3");
         }
+    }
+
+    void Port_DataReceived(object sender, SerialDataReceivedEventArgs e) {
+        SerialPort sp = (SerialPort)sender;
+        string data = sp.ReadExisting();
+        controller.view.Log("> Received data from CSCU: " + data);
     }
 
     private void SendHello() {

@@ -31,6 +31,8 @@ namespace CoolingObserverWPF {
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e) {
             StartFanAnimation();
+            SetRadiatorLevel(0.75f, eco: true);
+            SetPump1Level(0.25f, eco: false);
         }
 
         private void StartFanAnimation() {
@@ -55,6 +57,13 @@ namespace CoolingObserverWPF {
         private void Toggle_greenLED_Unchecked(object sender, RoutedEventArgs e) => controller.SetTestLED(false);
         private void Toggle_ledStrip_Checked(object sender, RoutedEventArgs e) => controller.SetLEDStrip(false);
         private void Toggle_ledStrip_Unchecked(object sender, RoutedEventArgs e) => controller.SetLEDStrip(false);
+
+        public void SetRadiatorLevel(float level, bool eco) {
+            TXT_radiator.Text = $"{level * 100}%{Environment.NewLine}[{(eco ? "ECO" : "BLAST")}]{Environment.NewLine}RADIATOR";
+        }
+        public void SetPump1Level(float level, bool eco) {
+            TXT_pump1.Text = $"{level * 100}%{Environment.NewLine}[{(eco ? "ECO" : "BLAST")}]{Environment.NewLine}PUMP 1";
+        }
 
 
         private void TerminalInput_KeyDown(object sender, KeyEventArgs e) {

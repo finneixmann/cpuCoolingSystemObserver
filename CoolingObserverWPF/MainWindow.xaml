@@ -389,9 +389,9 @@
                            Height="300"/>
 
                     <!-- COOLANT FILLING -->
-                    <Rectangle Width="135"
+                    <Rectangle Width="139"
                                Height="220"
-                               Opacity="0.1"
+                               Opacity=".2"
                                Fill="Blue">
                         <Rectangle.RenderTransform>
                             <TranslateTransform Y="12"/>
@@ -399,7 +399,8 @@
                     </Rectangle>
 
                     <!-- RADIATOR TEXT -->
-                    <TextBlock Margin="10,0,0,10"
+                    <TextBlock x:Name="TXT_radiator"
+                               Margin="10,0,0,10"
                                Grid.Column="0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
@@ -410,27 +411,29 @@
                         RADIATOR<LineBreak/>
                         <TextBlock.RenderTransform>
                             <TranslateTransform X="-480"
-                                                Y="52"/>
+                                                Y="48"/>
                         </TextBlock.RenderTransform>
                     </TextBlock>
 
                     <!-- PUMP1 TEXT -->
-                    <TextBlock Margin="10,0,0,10"
+                    <TextBlock x:Name="TXT_pump1"
+                               Margin="10,0,0,10"
                                Grid.Column="0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                Foreground="White"
-                               FontSize="11">
+                               FontSize="10">
                         20%<LineBreak/>
                         PUMP1<LineBreak/>
                         <TextBlock.RenderTransform>
                             <TranslateTransform X="-269"
-                                                Y="69"/>
+                                                Y="62"/>
                         </TextBlock.RenderTransform>
                     </TextBlock>
 
                     <!-- COOLANT TANK TEXT -->
-                    <TextBlock Margin="10,0,0,10"
+                    <TextBlock x:Name="TXT_coolant_tank"
+                               Margin="10,0,0,10"
                                Grid.Column="0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
@@ -445,7 +448,8 @@
                     </TextBlock>
 
                     <!-- PUMP2 TEXT -->
-                    <TextBlock Margin="10,0,0,10"
+                    <TextBlock x:Name="TXT_pump2"
+                               Margin="10,0,0,10"
                                Grid.Column="0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
@@ -460,7 +464,8 @@
                     </TextBlock>
 
                     <!-- CPU TEXT -->
-                    <TextBlock Margin="10,0,0,10"
+                    <TextBlock x:Name="TXT_cpu"
+                               Margin="10,0,0,10"
                                Grid.Column="0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
