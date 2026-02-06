@@ -1,5 +1,5 @@
 ﻿CoolingObserverWPF
-
+1.0.0.0
 
 winexe
 C#
@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET10_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_O
 E:\Finn Eixmann\26Elemetns\Projects\CPUCooler\cpuCoolingSystemObserver\CoolingObserverWPF\App.xaml
 11407045341
 
-51197665448
+71805844789
 206-1566153763
 MainWindow.xaml;
 
-False
+True
 

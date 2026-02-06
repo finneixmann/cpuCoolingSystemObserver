@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CoolingObserverWPF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a8d449416d5d0cb8faa623aa206e561bab63578")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56bb4eed3a034f648d8440b683cf1d28b7f5eae5")]
 [assembly: System.Reflection.AssemblyProductAttribute("CoolingObserverWPF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CoolingObserverWPF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
