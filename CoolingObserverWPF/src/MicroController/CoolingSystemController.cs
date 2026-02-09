@@ -17,7 +17,8 @@ public class CoolingSystemController {
     public CoolingSystemController(Controller controller) {
         this.controller = controller;
         Connect();
-        SendHandshake();
+        //SendHandshake();
+        RequestCSCUState();
         StartPolling();
     }
 
@@ -34,6 +35,7 @@ public class CoolingSystemController {
             controller.view.ShowMessage("Failed to connect to Cooling System Controller: " + ex.Message);
             controller.view.Log("Failed to connect to CSCU on COM3");
         }
+        controller.view.SetConnection(_isConnected);
     }
 
     void Port_DataReceived(object sender, SerialDataReceivedEventArgs e) {
@@ -54,9 +56,34 @@ public class CoolingSystemController {
                 foreach (string cmd in cmds) {
                     string[] args = cmd.Split('=');
                     switch (args[0]) {
-                        case "TMP":
+                        case "TMP": // coolant tank temperatur
                             if (int.TryParse(args[1], out int t)) {
                                 controller.view.SetCoolantTankTemperature(t);
+                            }
+                            break;
+                        case "SYM": // cscu mode
+                            if (int.TryParse(args[1], out int sysMode)) {
+                                controller.view.SetCSCUMode((Controller.CSCUMode)sysMode);
+                            }
+                            break;
+                        case "LED": // led mode
+                            if (int.TryParse(args[1], out int ledMode)) {
+                                controller.view.SetLEDMode((Controller.LEDMode)ledMode);
+                            }
+                            break;
+                        case "TSS": // temperature sensor status
+                            if (int.TryParse(args[1], out int tss)) {
+                                controller.view.SetTSS((Controller.TSS)tss);
+                            }
+                            break;
+                        case "P1P": // pump1 power level
+                            if (int.TryParse(args[1], out int p1p)) {
+                                controller.view.SetPump1PowerLevel(p1p);
+                            }
+                            break;
+                        case "P2P": // pump2 power level
+                            if (int.TryParse(args[1], out int p2p)) {
+                                controller.view.SetPump2PowerLevel(p2p);
                             }
                             break;
                         default:
@@ -89,7 +116,7 @@ public class CoolingSystemController {
 
     public void SetLEDStripActive(bool active) {
         if (!_isConnected) {
-            controller.view.ShowMessage("No connection to Cooling System Controller. Please reconnect.");
+            controller.view.ShowMessage("No connectsstion to Cooling System Controller. Please reconnect.");
             return;
         }
         port.WriteLine(active ? "SH" : "SL");
@@ -103,6 +130,11 @@ public class CoolingSystemController {
             return;
         }
         port.WriteLine(message);
+    }
+
+    // request status update from CSCU
+    private void RequestCSCUState() {
+        SendOnCOM3("REQ;TMP;TSS;LED;SYM");
     }
 
     // Polling routine to gather information from CSCU every POLLING_DELAY seconds

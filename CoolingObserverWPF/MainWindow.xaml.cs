@@ -22,6 +22,7 @@ namespace CoolingObserverWPF {
     /// </summary>
     public partial class MainWindow : Window {
         private Controller controller;
+        private Storyboard? _fanStoryboard;
 
         public MainWindow() {
             InitializeComponent();
@@ -31,17 +32,24 @@ namespace CoolingObserverWPF {
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e) {
             StartFanAnimation();
-            SetRadiatorLevel(0.75f, eco: true);
-            SetPump1Level(0.25f, eco: false);
+            LoadComboboxes();
         }
 
         private void StartFanAnimation() {
             RotateTransform rotate = new RotateTransform();
             IMG_fan_rotor.RenderTransform = rotate;
             IMG_fan_rotor.RenderTransformOrigin = new Point(0.5, 0.5);
+
             DoubleAnimation anim = new DoubleAnimation(0, 360, TimeSpan.FromSeconds(1.0));
             anim.RepeatBehavior = RepeatBehavior.Forever;
-            rotate.BeginAnimation(RotateTransform.AngleProperty, anim);
+
+            _fanStoryboard = new Storyboard();
+            _fanStoryboard.Children.Add(anim);
+
+            Storyboard.SetTarget(anim, rotate);
+            Storyboard.SetTargetProperty(anim, new PropertyPath(RotateTransform.AngleProperty));
+
+            _fanStoryboard.Begin();
         }
 
         public void ShowMessage(string message, string title, MessageBoxImage icon = MessageBoxImage.None, MessageBoxButton button = MessageBoxButton.OK) {
@@ -51,6 +59,14 @@ namespace CoolingObserverWPF {
                 button,
                 icon
             );
+        }
+
+        private void LoadComboboxes() {
+            CB_ledModeSelect.ItemsSource = Enum.GetNames(typeof(Controller.LEDMode));
+        }
+
+        private void BTN_applyLedChanges_Click(object sender, RoutedEventArgs e) {
+            //string selected = CB_ledModeSelect.SelectedItem as string;
         }
 
         private void Toggle_greenLED_Checked(object sender, RoutedEventArgs e) => controller.SetTestLED(true);
@@ -75,7 +91,7 @@ namespace CoolingObserverWPF {
         }
         public void SetCoolantTankTemperature(int temp) {
             TXT_coolant_tank.Dispatcher.Invoke(() => {
-                TXT_coolant_tank.Text = $"{temp}C{Environment.NewLine}COOLANT TANK";
+                TXT_coolant_tank.Text = $"{temp}℃{Environment.NewLine}COOLANT TANK";
             });
         }
         public void SetCpuTemp(int temp) {
@@ -83,7 +99,44 @@ namespace CoolingObserverWPF {
                 TXT_cpu.Text = $"{(temp == -1 ? "N/A" : $"{temp}C")}{Environment.NewLine}CPU";
             });
         }
+        public void SetCSCUMode(Controller.CSCUMode mode) {
+            TXT_sysMode.Dispatcher.Invoke(() => {
+                TXT_sysMode.Text = mode.ToString();
+            });
+        }
+        public void SetLEDMode(Controller.LEDMode mode) {
+            TXT_ledMode.Dispatcher.Invoke(() => {
+                TXT_ledMode.Text = $"MODE: {mode.ToString()}";
+            });
+        }
+        public void SetConnection(bool isConnected) {
+            TXT_connectionStatus.Dispatcher.Invoke(() => {
+                TXT_connectionStatus.Text = isConnected ? "CONNECTED" : "NO CONNECTION";
+            });
+            PNL_connectionStatus.Dispatcher.Invoke(() => {
+                PNL_connectionStatus.Visibility = isConnected ? Visibility.Collapsed : Visibility.Visible;
+            });
 
+            // FAN ANIMATION
+            if (isConnected) _fanStoryboard?.Resume();
+            else _fanStoryboard?.Pause();
+
+            // LED STRIP CONTROL VISIBILITY
+            GRID_ledStripControl.Dispatcher.Invoke(() => {
+                GRID_ledStripControl.Visibility = isConnected ? Visibility.Visible : Visibility.Hidden;
+            });
+            TXT_ledStripDisconnected.Dispatcher.Invoke(() => {
+                TXT_ledStripDisconnected.Visibility = isConnected ? Visibility.Hidden : Visibility.Visible;
+            });
+        }
+        public void SetTSS(Controller.TSS tss) {
+            PNL_tss.Dispatcher.Invoke(() => {
+                PNL_tss.Visibility = tss == Controller.TSS.OK ? Visibility.Collapsed : Visibility.Visible;
+            });
+            TXT_tss.Dispatcher.Invoke(() => {
+                TXT_tss.Text = tss.ToString();
+            });
+        }
 
         private void TerminalInput_KeyDown(object sender, KeyEventArgs e) {
             if (e.Key == Key.Enter) {
