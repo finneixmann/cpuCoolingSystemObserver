@@ -75,7 +75,7 @@ namespace CoolingObserverWPF {
         }
         public void SetCoolantTankTemperature(int temp) {
             TXT_coolant_tank.Dispatcher.Invoke(() => {
-                TXT_coolant_tank.Text = $"{temp}C{Environment.NewLine}COOLANT TANK";
+                TXT_coolant_tank.Text = $"{temp}℃{Environment.NewLine}COOLANT TANK";
             });
         }
         public void SetCpuTemp(int temp) {
@@ -83,7 +83,32 @@ namespace CoolingObserverWPF {
                 TXT_cpu.Text = $"{(temp == -1 ? "N/A" : $"{temp}C")}{Environment.NewLine}CPU";
             });
         }
-
+        public void SetCSCUMode(Controller.CSCUMode mode) {
+            TXT_sysMode.Dispatcher.Invoke(() => {
+                TXT_sysMode.Text = mode.ToString();
+            });
+        }
+        public void SetLEDMode(Controller.LEDMode mode) {
+            TXT_ledMode.Dispatcher.Invoke(() => {
+                TXT_ledMode.Text = $"MODE: {mode.ToString()}";
+            });
+        }
+        public void SetConnection(bool isConnected) {
+            TXT_connectionStatus.Dispatcher.Invoke(() => {
+                TXT_connectionStatus.Text = isConnected ? "CONNECTED" : "NO CONNECTION";
+            });
+            PNL_connectionStatus.Dispatcher.Invoke(() => {
+                PNL_connectionStatus.Visibility = isConnected ? Visibility.Collapsed : Visibility.Visible;
+            });
+        }
+        public void SetTSS(Controller.TSS tss) {
+            PNL_tss.Dispatcher.Invoke(() => {
+                PNL_tss.Visibility = tss == Controller.TSS.OK ? Visibility.Collapsed : Visibility.Visible;
+            });
+            TXT_tss.Dispatcher.Invoke(() => {
+                TXT_tss.Text = tss.ToString();
+            });
+        }
 
         private void TerminalInput_KeyDown(object sender, KeyEventArgs e) {
             if (e.Key == Key.Enter) {

@@ -13,7 +13,7 @@
         <ScrollViewer VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto"
                       Padding="10">
-            <Grid Margin="20">
+            <Grid Margin="0,0,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="Auto"/>
@@ -57,20 +57,23 @@
                                Height="150"/>
 
                         <!-- STATUS PANEL -->
-                        <Rectangle Grid.Column="0"
-                                   Width="100"
-                                   Height="20"
-                                   Fill="Red"
-                                   Opacity="1"/>
-                        <TextBlock Grid.Column="0"
-                                   Width="100"
-                                   Height="20"
-                                   FontSize="15"
-                                   TextAlignment="Center"
-                                   Text="OFFLINE"
-                                   Foreground="White"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"/>
+                        <Grid x:Name="PNL_connectionStatus"
+                              Grid.Column="0">
+                            <Rectangle Grid.Column="0"
+                                       Width="100"
+                                       Height="20"
+                                       Fill="Red"
+                                       Opacity="1"/>
+                            <TextBlock Grid.Column="0"
+                                       Width="100"
+                                       Height="20"
+                                       FontSize="15"
+                                       TextAlignment="Center"
+                                       Text="OFFLINE"
+                                       Foreground="White"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"/>
+                        </Grid>
 
                         <!-- STATUS TEXT-->
                         <StackPanel Grid.Column="1"
@@ -97,10 +100,11 @@
                                            Foreground="White"
                                            FontWeight="Thin"
                                            FontSize="20"/>
-                                <TextBlock Text="NO CONNECTION!"
+                                <TextBlock x:Name="TXT_connectionStatus"
+                                           Text="NO CONNECTION!"
                                            Margin="10,0,0,10"
                                            Grid.Column="2"
-                                           Foreground="Red"
+                                           Foreground="Orange"
                                            FontSize="20"
                                            FontWeight="Thin"/>
                             </Grid>
@@ -128,7 +132,7 @@
                                 <TextBlock Text="OK"
                                            Margin="10,0,0,10"
                                            Grid.Column="2"
-                                           Foreground="LimeGreen"
+                                           Foreground="Orange"
                                            FontSize="20"
                                            FontWeight="Thin"/>
                             </Grid>
@@ -154,10 +158,11 @@
                                            Foreground="White"
                                            FontWeight="Thin"
                                            FontSize="20"/>
-                                <TextBlock Text="ECO"
+                                <TextBlock x:Name="TXT_sysMode"
+                                           Text="pending..."
                                            Margin="10,0,0,10"
                                            Grid.Column="2"
-                                           Foreground="LimeGreen"
+                                           Foreground="Orange"
                                            FontSize="20"
                                            FontWeight="Thin"/>
                             </Grid>
@@ -247,6 +252,23 @@
                         </TextBlock>
 
                         <!-- COOLANT TANK TEXT -->
+                        <Grid x:Name="PNL_tss">
+                            <Rectangle Grid.Column="0"
+                                       Width="130"
+                                       Height="20"
+                                       Fill="Red"
+                                       Opacity="1"/>
+                            <TextBlock x:Name="TXT_tss"
+                                       Grid.Column="0"
+                                       Width="140"
+                                       Height="20"
+                                       FontSize="15"
+                                       TextAlignment="Center"
+                                       Text="DISCONNECTED"
+                                       Foreground="White"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"/>
+                        </Grid>
                         <TextBlock x:Name="TXT_coolant_tank"
                                    Margin="10,0,0,10"
                                    Grid.Column="0"
@@ -254,11 +276,11 @@
                                    HorizontalAlignment="Center"
                                    Foreground="White"
                                    FontSize="16">
-                        40℃<LineBreak/>
+                        ?℃<LineBreak/>
                         COOLANT TANK<LineBreak/>
                             <TextBlock.RenderTransform>
                                 <TranslateTransform X="-12"
-                                                    Y="115"/>
+                                                    Y="110"/>
                             </TextBlock.RenderTransform>
                         </TextBlock>
 
@@ -341,6 +363,14 @@
                                 <StackPanel Grid.Column="1"
                                             Margin="20,0,0,0"
                                             VerticalAlignment="Center">
+
+                                    <!-- CURRENT LED MODE -->
+                                    <TextBlock x:Name="TXT_ledMode"
+                                               Text="MODE: pending..."
+                                               Foreground="White"
+                                               FontSize="20"
+                                               Margin="0,0,0,5"/>
+
 
                                     <!-- GREEN LED TOGGLE BUTTON -->
                                     <Grid Margin="0,0,0,0">
@@ -470,7 +500,7 @@
                             CornerRadius="0">
 
                             <!-- TERMINAL -->
-                            <Grid Margin="10">
+                            <Grid Margin="00">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="Auto"/>
@@ -487,7 +517,7 @@
                                          VerticalScrollBarVisibility="Auto"
                                          TextWrapping="Wrap"
                                          AcceptsReturn="True"
-                                         Height="100"
+                                         Height="145"
                                          Padding="5"/>
 
                                 <!-- COMMAND LINE -->

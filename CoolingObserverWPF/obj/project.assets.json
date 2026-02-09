@@ -1778,19 +1778,21 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Finn Eixmann\\26Elemetns\\Projects\\CPUCooler\\cpuCoolingSystemObserver\\CoolingObserverWPF\\CoolingObserverWPF.csproj",
+      "projectUniqueName": "C:\\Users\\finne\\OneDrive\\Desktop\\Finn Eixmann\\WaterCoolingProject\\programs\\observer\\cpuCoolingSystemObserver\\CoolingObserverWPF\\CoolingObserverWPF.csproj",
       "projectName": "CoolingObserverWPF",
-      "projectPath": "E:\\Finn Eixmann\\26Elemetns\\Projects\\CPUCooler\\cpuCoolingSystemObserver\\CoolingObserverWPF\\CoolingObserverWPF.csproj",
+      "projectPath": "C:\\Users\\finne\\OneDrive\\Desktop\\Finn Eixmann\\WaterCoolingProject\\programs\\observer\\cpuCoolingSystemObserver\\CoolingObserverWPF\\CoolingObserverWPF.csproj",
       "packagesPath": "C:\\Users\\finne\\.nuget\\packages\\",
-      "outputPath": "E:\\Finn Eixmann\\26Elemetns\\Projects\\CPUCooler\\cpuCoolingSystemObserver\\CoolingObserverWPF\\obj\\",
+      "outputPath": "C:\\Users\\finne\\OneDrive\\Desktop\\Finn Eixmann\\WaterCoolingProject\\programs\\observer\\cpuCoolingSystemObserver\\CoolingObserverWPF\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\finne\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\finne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net10.0-windows"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1843,7 +1845,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
