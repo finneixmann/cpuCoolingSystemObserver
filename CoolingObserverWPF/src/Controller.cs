@@ -21,15 +21,21 @@ namespace CoolingObserverWPF.src {
             LOOP1 = 2
         }
 
+        public CSCUMode cscuMode = CSCUMode.ECO;
 
         public Controller(MainWindow mainWindow) {
-            this.view = new View(mainWindow);
+            this.view = new View(mainWindow, this);
             this.cpuObserver = new CpuObserver(this);
             this.coolingSystemController = new CoolingSystemController(controller: this);
 
             if (!cpuObserver.IsAuthorized) {
                 view.SetCpuTemp(-1);
             }
+        }
+
+        public void Reconnect() {
+            this.cpuObserver = new CpuObserver(this);
+            this.coolingSystemController = new CoolingSystemController(controller: this);
         }
 
         public void SetTestLED(bool active) {
@@ -46,8 +52,10 @@ namespace CoolingObserverWPF.src {
 
         public class View {
             private MainWindow mainWindow;
-            public View(MainWindow mainWindow) {
+            private Controller controller;
+            public View(MainWindow mainWindow, Controller controller) {
                 this.mainWindow = mainWindow;
+                this.controller = controller;
             }
 
             public void ShowMessage(string message) {
@@ -67,8 +75,8 @@ namespace CoolingObserverWPF.src {
             public void SetLEDMode(LEDMode mode) => mainWindow.SetLEDMode(mode);
             public void SetCpuTemp(int temp) => mainWindow.SetCpuTemp(temp);
             public void SetConnection(bool isConnected) => mainWindow.SetConnection(isConnected);
-            public void SetPump1PowerLevel(int level) => mainWindow.SetPump1Level(level, false);
-            public void SetPump2PowerLevel(int level) => mainWindow.SetPump2Level(level, false);
+            public void SetPump1PowerLevel(int level) => mainWindow.SetPump1Level(level, eco: controller.cscuMode == CSCUMode.ECO);
+            public void SetPump2PowerLevel(int level) => mainWindow.SetPump2Level(level, eco: controller.cscuMode == CSCUMode.ECO);
         }
     }
 }

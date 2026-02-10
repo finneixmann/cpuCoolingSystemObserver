@@ -129,7 +129,8 @@
                                            Foreground="White"
                                            FontWeight="Thin"
                                            FontSize="20"/>
-                                <TextBlock Text="OK"
+                                <TextBlock Text="pending..."
+                                           x:Name="TXT_systemStatus"
                                            Margin="10,0,0,10"
                                            Grid.Column="2"
                                            Foreground="Orange"
@@ -170,12 +171,13 @@
                         <StackPanel Grid.Column="2">
                             <Button
                                 Margin="10,0,0,10"
-                                Foreground="LimeGreen"
+                                Foreground="White"
                                 Background="Transparent"
-                                BorderBrush="LimeGreen"
+                                BorderBrush="White"
                                 FontSize="20"
-                                FontWeight="Thin">
-                                RECONNECT SYSTEM
+                                FontWeight="Thin"
+                                Click="BTN_reconnect_Click">
+                                RECONNECT CSCU
                             </Button>
 
                         </StackPanel>
@@ -208,16 +210,6 @@
                                Width="1080"
                                Height="300"/>
 
-                        <!-- COOLANT FILLING -->
-                        <Rectangle Width="139"
-                                   Height="220"
-                                   Opacity=".2"
-                                   Fill="Blue">
-                            <Rectangle.RenderTransform>
-                                <TranslateTransform Y="12"/>
-                            </Rectangle.RenderTransform>
-                        </Rectangle>
-
                         <!-- RADIATOR TEXT -->
                         <TextBlock x:Name="TXT_radiator"
                                    Margin="10,0,0,10"
@@ -226,7 +218,7 @@
                                    HorizontalAlignment="Center"
                                    Foreground="White"
                                    FontSize="16">
-                        35%<LineBreak/>
+                        ---%<LineBreak/>
                         [ECO]<LineBreak/>
                         RADIATOR<LineBreak/>
                             <TextBlock.RenderTransform>
@@ -243,7 +235,7 @@
                                    HorizontalAlignment="Center"
                                    Foreground="White"
                                    FontSize="10">
-                        20%<LineBreak/>
+                        ---%<LineBreak/>
                         PUMP1<LineBreak/>
                             <TextBlock.RenderTransform>
                                 <TranslateTransform X="-269"
@@ -276,7 +268,7 @@
                                    HorizontalAlignment="Center"
                                    Foreground="White"
                                    FontSize="16">
-                        ?℃<LineBreak/>
+                        ---℃<LineBreak/>
                         COOLANT TANK<LineBreak/>
                             <TextBlock.RenderTransform>
                                 <TranslateTransform X="-12"
@@ -292,7 +284,7 @@
                                    HorizontalAlignment="Center"
                                    Foreground="White"
                                    FontSize="11">
-                        22%<LineBreak/>
+                        ---%<LineBreak/>
                         PUMP2<LineBreak/>
                             <TextBlock.RenderTransform>
                                 <TranslateTransform X="197"
@@ -308,7 +300,7 @@
                                    HorizontalAlignment="Center"
                                    Foreground="White"
                                    FontSize="16">
-                        63℃<LineBreak/>
+                        ---℃<LineBreak/>
                         CPU<LineBreak/>
                             <TextBlock.RenderTransform>
                                 <TranslateTransform X="432"
@@ -345,137 +337,127 @@
                                 Padding="10"
                                 CornerRadius="0">
 
-
-                            <!-- LED STRIP CONTROL -->
                             <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                                <!-- LED STRIP CONTROL -->
+                                <Grid x:Name="GRID_ledStripControl"
+                                      Visibility="Hidden">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <!-- LED STRIP IMAGE -->
-                                <Image x:Name="IMG_led_strip"
-                                       Grid.Column="0"
-                                       Source="Images/led_strip.png"
-                                       Width="200"
-                                       Height="150"/>
+                                    <!-- LED STRIP IMAGE -->
+                                    <Image x:Name="IMG_led_strip"
+                                           Grid.Column="0"
+                                           Source="Images/led_strip.png"
+                                           Width="200"
+                                           Height="150"/>
 
-                                <StackPanel Grid.Column="1"
-                                            Margin="20,0,0,0"
-                                            VerticalAlignment="Center">
+                                    <StackPanel Grid.Column="1"
+                                                Margin="20,0,0,0"
+                                                VerticalAlignment="Center">
 
-                                    <!-- CURRENT LED MODE -->
-                                    <TextBlock x:Name="TXT_ledMode"
-                                               Text="MODE: pending..."
-                                               Foreground="White"
-                                               FontSize="20"
-                                               Margin="0,0,0,5"/>
-
-
-                                    <!-- GREEN LED TOGGLE BUTTON -->
-                                    <Grid Margin="0,0,0,0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <ToggleButton x:Name="Toggle_greenLED"
-                                                      Grid.Column="0"
-                                                      Width="100"
-                                                      Height="30"
-                                                      HorizontalAlignment="Left"
-                                                      VerticalAlignment="Top"
-                                                      Checked="Toggle_greenLED_Checked"
-                                                      Unchecked="Toggle_greenLED_Unchecked">
-                                            <ToggleButton.Style>
-                                                <Style TargetType="ToggleButton">
-                                                    <Setter Property="Background"
-                                                            Value="LightGray"/>
-                                                    <Setter Property="Foreground"
-                                                            Value="Black"/>
-                                                    <Style.Triggers>
-                                                        <Trigger Property="IsChecked"
-                                                                 Value="True">
-                                                            <Setter Property="Background"
-                                                                    Value="Green"/>
-                                                            <Setter Property="Foreground"
-                                                                    Value="Black"/>
-                                                            <Setter Property="Content"
-                                                                    Value="LED on"/>
-
-                                                        </Trigger>
-                                                        <Trigger Property="IsChecked"
-                                                                 Value="False">
-                                                            <Setter Property="Background"
-                                                                    Value="Black"/>
-                                                            <Setter Property="Foreground"
-                                                                    Value="Red"/>
-                                                            <Setter Property="Content"
-                                                                    Value="LED off"/>
-                                                        </Trigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </ToggleButton.Style>
-                                        </ToggleButton>
-                                        <TextBlock Text="Toggle green LED"
-                                                   Grid.Column="1"
-                                                   Margin="10,0,0,10"
-                                                   VerticalAlignment="Center"
+                                        <!-- CURRENT LED MODE -->
+                                        <TextBlock x:Name="TXT_ledMode"
+                                                   Text="MODE: pending..."
                                                    Foreground="White"
-                                                   FontSize="16"/>
-                                    </Grid>
+                                                   FontSize="20"
+                                                   Margin="0,0,0,5"/>
 
-                                    <!-- CHANGE LED MODE -->
-                                    <Grid Margin="0,0,0,0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <ToggleButton x:Name="Change_LED_Mode"
-                                                      Grid.Column="0"
-                                                      Width="100"
+                                        <!-- SELECT LED MODE -->
+                                        <Grid Margin="0,0,0,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="200"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="SELECT MODE:"
+                                                       Grid.Column="0"
+                                                       Margin="0,0,10,0"
+                                                       VerticalAlignment="Center"
+                                                       Foreground="White"
+                                                       FontSize="16"/>
+                                            <ComboBox x:Name="CB_ledModeSelect"
+                                                      Grid.Column="1"
                                                       Height="30"
-                                                      HorizontalAlignment="Left"
-                                                      VerticalAlignment="Top"
-                                                      Checked="Toggle_greenLED_Checked"
-                                                      Unchecked="Toggle_greenLED_Unchecked">
-                                            <ToggleButton.Style>
-                                                <Style TargetType="ToggleButton">
-                                                    <Setter Property="Background"
-                                                            Value="LightGray"/>
-                                                    <Setter Property="Foreground"
-                                                            Value="Black"/>
-                                                    <Style.Triggers>
-                                                        <Trigger Property="IsChecked"
-                                                                 Value="True">
-                                                            <Setter Property="Background"
-                                                                    Value="Green"/>
-                                                            <Setter Property="Foreground"
-                                                                    Value="Black"/>
-                                                            <Setter Property="Content"
-                                                                    Value="LED on"/>
+                                                      HorizontalAlignment="Stretch"/>
+                                        </Grid>
 
-                                                        </Trigger>
-                                                        <Trigger Property="IsChecked"
-                                                                 Value="False">
-                                                            <Setter Property="Background"
-                                                                    Value="Black"/>
-                                                            <Setter Property="Foreground"
-                                                                    Value="Red"/>
-                                                            <Setter Property="Content"
-                                                                    Value="LED off"/>
-                                                        </Trigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </ToggleButton.Style>
-                                        </ToggleButton>
-                                        <TextBlock Text="Change LED Mode"
-                                                   Grid.Column="1"
-                                                   Margin="10,0,0,10"
-                                                   VerticalAlignment="Center"
-                                                   Foreground="White"
-                                                   FontSize="16"/>
-                                    </Grid>
-                                </StackPanel>
+
+                                        <!-- GREEN LED TOGGLE BUTTON -->
+                                        <Grid Margin="0,0,0,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="200"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="TOGGLE TEST LED:"
+                                                       Grid.Column="0"
+                                                       Margin="0,0,0,10"
+                                                       TextAlignment="Left"
+                                                       VerticalAlignment="Center"
+                                                       Foreground="White"
+                                                       FontSize="16"/>
+                                            <ToggleButton x:Name="Toggle_greenLED"
+                                                          Grid.Column="1"
+                                                          Height="30"
+                                                          HorizontalAlignment="Stretch"
+                                                          VerticalAlignment="Top"
+                                                          Checked="Toggle_greenLED_Checked"
+                                                          Unchecked="Toggle_greenLED_Unchecked">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background"
+                                                                Value="LightGray"/>
+                                                        <Setter Property="Foreground"
+                                                                Value="Black"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked"
+                                                                     Value="True">
+                                                                <Setter Property="Background"
+                                                                        Value="Green"/>
+                                                                <Setter Property="Foreground"
+                                                                        Value="Black"/>
+                                                                <Setter Property="Content"
+                                                                        Value="LED on"/>
+
+                                                            </Trigger>
+                                                            <Trigger Property="IsChecked"
+                                                                     Value="False">
+                                                                <Setter Property="Background"
+                                                                        Value="Black"/>
+                                                                <Setter Property="Foreground"
+                                                                        Value="Red"/>
+                                                                <Setter Property="Content"
+                                                                        Value="LED off"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+
+                                        </Grid>
+
+                                        <!-- CHANGE LED MODE -->
+                                        <Button x:Name="BTN_updateLedChanges"
+                                                Content="APPLY"
+                                                Grid.Column="1"
+                                                HorizontalAlignment="Stretch"
+                                                Background="Transparent"
+                                                BorderBrush="White"
+                                                Foreground="White"
+                                                Height="30"
+                                                Click="BTN_applyLedChanges_Click"/>
+
+                                    </StackPanel>
+                                </Grid>
+
+                                <!-- LED STRIP CONTROL (DISCONNECTED) -->
+                                <TextBlock x:Name="TXT_ledStripDisconnected"
+                                           Text="CSCU DISCONNECTED"
+                                           Foreground="White"
+                                           FontSize="20"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Visibility="Visible"/>
                             </Grid>
                         </Border>
                     </Grid>
@@ -511,7 +493,7 @@
                                          Grid.Row="0"
                                          VerticalAlignment="Stretch"
                                          Background="#000000"
-                                         Foreground="#00FF66"
+                                         Foreground="White"
                                          FontSize="14"
                                          IsReadOnly="True"
                                          VerticalScrollBarVisibility="Auto"

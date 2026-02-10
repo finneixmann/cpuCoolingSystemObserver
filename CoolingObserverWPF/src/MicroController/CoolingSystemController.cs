@@ -7,17 +7,22 @@ using CoolingObserverWPF.src;
 public class CoolingSystemController {
 
     private readonly float POLLING_DELAY = 8f;
+    private readonly float ANSWER_TIMEOUT = 2f;
+    private LoadedTimeout loadedTimeout;
     private SerialPort port = new();
     private Controller controller;
     private bool _isConnected = false;
     private CancellationTokenSource? _pollingCts;
+    private CancellationTokenSource? _timeoutCts;
     private String inputBuffer = "";
 
 
     public CoolingSystemController(Controller controller) {
         this.controller = controller;
+        this.loadedTimeout = new LoadedTimeout(ANSWER_TIMEOUT);
+        this.loadedTimeout.OnTimeout += OnTimeout;
         Connect();
-        SendHandshake();
+        //SendHandshake();
         RequestCSCUState();
         StartPolling();
     }
@@ -45,10 +50,15 @@ public class CoolingSystemController {
         if (data.Contains("\n")) {
             ProcessInput();
         }
-        //controller.view.Log("> Received data from CSCU: " + data);
+    }
+
+    private void OnTimeout() {
+        _isConnected = false;
+        controller.view.SetConnection(false);
     }
 
     private void ProcessInput() {
+        loadedTimeout.RemoveLoad();
         controller.view.Log("Received data from CSCU: " + inputBuffer);
         try {
             string[] cmds = inputBuffer.Split(';');
@@ -103,7 +113,6 @@ public class CoolingSystemController {
             return;
         }
         port.WriteLine("H");
-        Console.WriteLine("Send test message to COM3");
     }
 
     public void SetGreenLED(bool active) {
@@ -125,10 +134,12 @@ public class CoolingSystemController {
     // Send message to CSCU on COM3
     private void SendOnCOM3(String message) {
         if (!_isConnected) {
+            _isConnected = false;
             controller.view.ShowMessage("No connection to Cooling System Controller. Please reconnect.");
             StopPolling();
             return;
         }
+        loadedTimeout.AddLoad();
         port.WriteLine(message);
     }
 
