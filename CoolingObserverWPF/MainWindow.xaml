@@ -288,7 +288,7 @@
                         PUMP2<LineBreak/>
                             <TextBlock.RenderTransform>
                                 <TranslateTransform X="197"
-                                                    Y="-42"/>
+                                                    Y="-48"/>
                             </TextBlock.RenderTransform>
                         </TextBlock>
 

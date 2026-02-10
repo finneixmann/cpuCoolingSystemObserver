@@ -24,18 +24,16 @@ class LoadedTimeout {
         }
     }
 
-    public void Start() {
-        // Vorherigen Timer abbrechen
+    private void Start() {
         Stop();
 
         tokenSource = new CancellationTokenSource();
         CancellationToken token = tokenSource.Token;
 
-        // Async Task starten
         _ = RunTimerAsync(token);
     }
 
-    public void Stop() {
+    private void Stop() {
         if (tokenSource != null) {
             tokenSource.Cancel();
             tokenSource.Dispose();

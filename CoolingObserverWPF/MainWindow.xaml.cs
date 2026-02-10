@@ -52,8 +52,12 @@ namespace CoolingObserverWPF {
         }
 
         private void BTN_applyLedChanges_Click(object sender, RoutedEventArgs e) {
-            //string selected = CB_ledModeSelect.SelectedItem as string;
+            string? selected = CB_ledModeSelect.SelectedItem as string;
+            if (selected != null && Enum.TryParse(selected, out Controller.LEDMode ledMode)) {
+                controller.UpdateLed(ledMode);
+            }
         }
+
 
         private void BTN_reconnect_Click(object sender, RoutedEventArgs e) {
             controller.Reconnect();
@@ -61,12 +65,11 @@ namespace CoolingObserverWPF {
 
         private void Toggle_greenLED_Checked(object sender, RoutedEventArgs e) => controller.SetTestLED(true);
         private void Toggle_greenLED_Unchecked(object sender, RoutedEventArgs e) => controller.SetTestLED(false);
-        private void Toggle_ledStrip_Checked(object sender, RoutedEventArgs e) => controller.SetLEDStrip(false);
-        private void Toggle_ledStrip_Unchecked(object sender, RoutedEventArgs e) => controller.SetLEDStrip(false);
+
 
         public void SetRadiatorLevel(float level, bool eco) {
             TXT_radiator.Dispatcher.Invoke(() => {
-                TXT_radiator.Text = $"{level * 100}%{Environment.NewLine}[{(eco ? "ECO" : "BLAST")}]{Environment.NewLine}RADIATOR";
+                TXT_radiator.Text = $"{level}%{Environment.NewLine}[{(eco ? "ECO" : "BLAST")}]{Environment.NewLine}RADIATOR";
             });
         }
         public void SetPump1Level(float level, bool eco) {
