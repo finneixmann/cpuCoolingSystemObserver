@@ -13,7 +13,6 @@ public class CoolingSystemController {
     private Controller controller;
     private bool _isConnected = false;
     private CancellationTokenSource? _pollingCts;
-    private CancellationTokenSource? _timeoutCts;
     private String inputBuffer = "";
 
 

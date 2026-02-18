@@ -1,0 +1,15 @@
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Release\net10.0-windows\win-x64\publish\CoolingObserverWPF.exe
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Release\net10.0-windows\win-x64\publish\Images\coolant_tank.png
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Release\net10.0-windows\win-x64\publish\Images\coolant_tank_filling.png
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Release\net10.0-windows\win-x64\publish\Images\cool_cycle.png
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Release\net10.0-windows\win-x64\publish\Images\cool_cycle_filling.png
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Release\net10.0-windows\win-x64\publish\Images\fan_rotor.png
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Release\net10.0-windows\win-x64\publish\Images\led_strip.png
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Release\net10.0-windows\win-x64\publish\Images\pump_cpu.png
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Release\net10.0-windows\win-x64\publish\Images\pump_radiator.png
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Release\net10.0-windows\win-x64\publish\CoolingObserverWPF.dll
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Release\net10.0-windows\win-x64\publish\CoolingObserverWPF.deps.json
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Release\net10.0-windows\win-x64\publish\CoolingObserverWPF.runtimeconfig.json
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Release\net10.0-windows\win-x64\publish\CoolingObserverWPF.pdb
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Release\net10.0-windows\win-x64\publish\System.IO.Ports.dll
+C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Release\net10.0-windows\win-x64\publish\System.Management.dll

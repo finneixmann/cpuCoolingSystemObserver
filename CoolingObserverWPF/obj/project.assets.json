@@ -1178,6 +1178,112 @@
           }
         }
       }
+    },
+    "net10.0-windows7.0/win-x64": {
+      "runtime.android-arm.runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package"
+      },
+      "runtime.android-arm64.runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package"
+      },
+      "runtime.android-x64.runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package"
+      },
+      "runtime.android-x86.runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package"
+      },
+      "runtime.linux-arm.runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package"
+      },
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package"
+      },
+      "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package"
+      },
+      "runtime.linux-bionic-x64.runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package"
+      },
+      "runtime.linux-musl-arm.runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package"
+      },
+      "runtime.linux-musl-arm64.runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package"
+      },
+      "runtime.linux-musl-x64.runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package"
+      },
+      "runtime.linux-x64.runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package"
+      },
+      "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package"
+      },
+      "runtime.maccatalyst-x64.runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package"
+      },
+      "runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package",
+        "dependencies": {
+          "runtime.android-arm.runtime.native.System.IO.Ports": "10.0.2",
+          "runtime.android-arm64.runtime.native.System.IO.Ports": "10.0.2",
+          "runtime.android-x64.runtime.native.System.IO.Ports": "10.0.2",
+          "runtime.android-x86.runtime.native.System.IO.Ports": "10.0.2",
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "10.0.2",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "10.0.2",
+          "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports": "10.0.2",
+          "runtime.linux-bionic-x64.runtime.native.System.IO.Ports": "10.0.2",
+          "runtime.linux-musl-arm.runtime.native.System.IO.Ports": "10.0.2",
+          "runtime.linux-musl-arm64.runtime.native.System.IO.Ports": "10.0.2",
+          "runtime.linux-musl-x64.runtime.native.System.IO.Ports": "10.0.2",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "10.0.2",
+          "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports": "10.0.2",
+          "runtime.maccatalyst-x64.runtime.native.System.IO.Ports": "10.0.2",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "10.0.2",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "10.0.2"
+        }
+      },
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package"
+      },
+      "runtime.osx-x64.runtime.native.System.IO.Ports/10.0.2": {
+        "type": "package"
+      },
+      "System.IO.Ports/10.0.2": {
+        "type": "package",
+        "dependencies": {
+          "runtime.native.System.IO.Ports": "10.0.2"
+        },
+        "compile": {
+          "lib/net10.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/win/lib/net10.0/System.IO.Ports.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "System.Management/10.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/System.Management.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/win/lib/net10.0/System.Management.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      }
     }
   },
   "libraries": {
@@ -2136,6 +2242,11 @@
           "System.Xml.XPath": "(,4.3.32767]",
           "System.Xml.XPath.XDocument": "(,5.0.32767]"
         }
+      }
+    },
+    "runtimes": {
+      "win-x64": {
+        "#import": []
       }
     }
   }
