@@ -7,6 +7,8 @@ using CoolingObserverWPF.src;
 public class CoolingSystemController {
 
     private readonly float POLLING_DELAY = 8f;
+    private readonly float ANSWER_TIMEOUT = 2f;
+    private LoadedTimeout loadedTimeout;
     private SerialPort port = new();
     private Controller controller;
     private bool _isConnected = false;
@@ -16,6 +18,8 @@ public class CoolingSystemController {
 
     public CoolingSystemController(Controller controller) {
         this.controller = controller;
+        this.loadedTimeout = new LoadedTimeout(ANSWER_TIMEOUT);
+        this.loadedTimeout.OnTimeout += OnTimeout;
         Connect();
         //SendHandshake();
         RequestCSCUState();
@@ -45,14 +49,23 @@ public class CoolingSystemController {
         if (data.Contains("\n")) {
             ProcessInput();
         }
-        //controller.view.Log("> Received data from CSCU: " + data);
+    }
+
+    private void OnTimeout() {
+        _isConnected = false;
+        controller.view.SetConnection(false);
+    }
+
+    public void SetLED(Controller.LEDMode ledMode) {
+        SendOnCOM3($"WRT;LED={(int)ledMode};");
     }
 
     private void ProcessInput() {
+        loadedTimeout.RemoveLoad();
         controller.view.Log("Received data from CSCU: " + inputBuffer);
         try {
             string[] cmds = inputBuffer.Split(';');
-            if (cmds[0] == "WRT") {
+            if (cmds[0] == "CFM") {
                 foreach (string cmd in cmds) {
                     string[] args = cmd.Split('=');
                     switch (args[0]) {
@@ -86,6 +99,11 @@ public class CoolingSystemController {
                                 controller.view.SetPump2PowerLevel(p2p);
                             }
                             break;
+                        case "RFP": // radiator fan power level
+                            if (int.TryParse(args[1], out int rfp)) {
+                                controller.view.SetRadiatorLevel(rfp);
+                            }
+                            break;
                         default:
                             // ignore
                             break;
@@ -103,38 +121,27 @@ public class CoolingSystemController {
             return;
         }
         port.WriteLine("H");
-        Console.WriteLine("Send test message to COM3");
     }
 
     public void SetGreenLED(bool active) {
-        if (!_isConnected) {
-            controller.view.ShowMessage("No connection to Cooling System Controller. Please reconnect.");
-            return;
-        }
-        port.WriteLine(active ? "H" : "L");
-    }
-
-    public void SetLEDStripActive(bool active) {
-        if (!_isConnected) {
-            controller.view.ShowMessage("No connectsstion to Cooling System Controller. Please reconnect.");
-            return;
-        }
-        port.WriteLine(active ? "SH" : "SL");
+        SendOnCOM3($"WRT;TST={(active ? "1" : "0")};");
     }
 
     // Send message to CSCU on COM3
-    private void SendOnCOM3(String message) {
+    public void SendOnCOM3(String message) {
         if (!_isConnected) {
+            _isConnected = false;
             controller.view.ShowMessage("No connection to Cooling System Controller. Please reconnect.");
             StopPolling();
             return;
         }
+        loadedTimeout.AddLoad();
         port.WriteLine(message);
     }
 
     // request status update from CSCU
     private void RequestCSCUState() {
-        SendOnCOM3("REQ;TMP;TSS;LED;SYM");
+        SendOnCOM3("REQ;TMP;TSS;LED;SYM;P1P;P2P;RFP;");
     }
 
     // Polling routine to gather information from CSCU every POLLING_DELAY seconds

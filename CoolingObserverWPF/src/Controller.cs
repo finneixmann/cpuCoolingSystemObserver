@@ -5,6 +5,7 @@ namespace CoolingObserverWPF.src {
     public class Controller {
         private CoolingSystemController coolingSystemController;
         private CpuObserver cpuObserver;
+        private PlotViewer plotViewer;
         public View view;
         public enum CSCUMode {
             ECO = 0,
@@ -27,21 +28,28 @@ namespace CoolingObserverWPF.src {
             this.view = new View(mainWindow, this);
             this.cpuObserver = new CpuObserver(this);
             this.coolingSystemController = new CoolingSystemController(controller: this);
+            this.plotViewer = new PlotViewer(mainWindow);
 
             if (!cpuObserver.IsAuthorized) {
                 view.SetCpuTemp(-1);
             }
         }
 
+        public void Reconnect() {
+            this.cpuObserver = new CpuObserver(this);
+            this.coolingSystemController = new CoolingSystemController(controller: this);
+        }
+
+        public void UpdateLed(LEDMode ledMode) {
+            coolingSystemController.SetLED(ledMode);
+        }
+
         public void SetTestLED(bool active) {
             coolingSystemController.SetGreenLED(active);
         }
 
-        public void SetLEDStrip(bool active) {
-            coolingSystemController.SetLEDStripActive(active);
-        }
-
         public void EnterCommand(string cmd) {
+            coolingSystemController.SendOnCOM3(cmd);
             view.Log($"[USER] > {cmd}");
         }
 
@@ -61,9 +69,7 @@ namespace CoolingObserverWPF.src {
                 mainWindow.Log(message.Trim());
             }
 
-            public void SetRadiatorLevel(float level, bool eco) => mainWindow.SetRadiatorLevel(level, eco);
-            public void SetPump1Level(float level, bool eco) => mainWindow.SetPump1Level(level, eco);
-            public void SetPump2Level(float level, bool eco) => mainWindow.SetPump2Level(level, eco);
+            public void SetRadiatorLevel(float level) => mainWindow.SetRadiatorLevel(level, eco: controller.cscuMode == CSCUMode.ECO);
             public void SetCoolantTankTemperature(int temp) => mainWindow.SetCoolantTankTemperature(temp);
             public void SetCSCUMode(CSCUMode mode) => mainWindow.SetCSCUMode(mode);
             public void SetTSS(TSS tss) => mainWindow.SetTSS(tss);

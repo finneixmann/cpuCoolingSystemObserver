@@ -1,6 +1,7 @@
 ﻿<Window x:Class="CoolingObserverWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoolingObserverWPF"
@@ -9,6 +10,7 @@
         Title="CoolSysObserver"
         Height="950"
         Width="1280">
+
     <Grid Background="#111111">
         <ScrollViewer VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto"
@@ -170,14 +172,32 @@
                         </StackPanel>
                         <StackPanel Grid.Column="2">
                             <Button
-                                Margin="10,0,0,10"
+                                Margin="0,0,0,0"
                                 Foreground="White"
                                 Background="Transparent"
                                 BorderBrush="White"
                                 FontSize="20"
-                                FontWeight="Thin">
-                                RECONNECT SYSTEM
+                                FontWeight="Thin"
+                                Click="BTN_reconnect_Click">
+                                RECONNECT CSCU
                             </Button>
+                            <Button
+                                Margin="0,0,0,0"
+                                Foreground="White"
+                                Visibility="Collapsed"
+                                Background="Transparent"
+                                BorderBrush="White"
+                                FontSize="20"
+                                FontWeight="Thin"
+                                Click="BTN_generalPurposeAction_Click">
+                                GENERAL PURPOSE ACTION
+                            </Button>
+
+                            <!-- PLOTS-->
+                            <Grid>
+                                <oxy:PlotView Model="{Binding SinModel}"
+                                              MinHeight="200"/>
+                            </Grid>
 
                         </StackPanel>
                     </Grid>
@@ -287,7 +307,7 @@
                         PUMP2<LineBreak/>
                             <TextBlock.RenderTransform>
                                 <TranslateTransform X="197"
-                                                    Y="-42"/>
+                                                    Y="-48"/>
                             </TextBlock.RenderTransform>
                         </TextBlock>
 

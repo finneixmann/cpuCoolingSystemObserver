@@ -1,1 +1,13 @@
-readme
+readmeCSCUObserver [Devkit] is a lightweight WPF application for real-time monitoring and control of your custom CPU water cooling system.
+
+Key Features:
+
+-Direct Microcontroller Access: Communicate with your cooling system via a custom API.
+-Real-Time Data Monitoring: View essential metrics such as fan speed, pump power, and tank temperature.
+-LED Control: Change the mode of your RGB LED strips directly from the app.
+-User-Unfriendly Interface: WPF UI for easy visualization of all system data made for devs.
+
+This tool is designed only for development purposes of the CSCU.
+
+build with:
+ dotnet publish -c Release -r win-x64 --self-contained false /p:PublishSingleFile=true

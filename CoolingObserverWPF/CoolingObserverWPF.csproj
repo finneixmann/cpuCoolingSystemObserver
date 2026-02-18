@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="OxyPlot.Wpf" Version="2.2.0" />
     <PackageReference Include="System.IO.Ports" Version="10.0.2" />
     <PackageReference Include="System.Management" Version="10.0.2" />
   </ItemGroup>

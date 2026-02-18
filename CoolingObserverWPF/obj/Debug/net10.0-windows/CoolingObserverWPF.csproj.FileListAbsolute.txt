@@ -104,3 +104,6 @@ E:\Finn Eixmann\26Elemetns\Projects\CPUCooler\cpuCoolingSystemObserver\CoolingOb
 E:\Finn Eixmann\26Elemetns\Projects\CPUCooler\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Debug\net10.0-windows\runtimes\win\lib\net10.0\System.Management.dll
 C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Debug\net10.0-windows\System.Management.dll
 C:\Users\finne\OneDrive\Desktop\Finn Eixmann\WaterCoolingProject\programs\observer\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Debug\net10.0-windows\runtimes\win\lib\net10.0\System.Management.dll
+E:\Finn Eixmann\26Elemetns\Projects\CPUCooler\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Debug\net10.0-windows\OxyPlot.dll
+E:\Finn Eixmann\26Elemetns\Projects\CPUCooler\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Debug\net10.0-windows\OxyPlot.Wpf.dll
+E:\Finn Eixmann\26Elemetns\Projects\CPUCooler\cpuCoolingSystemObserver\CoolingObserverWPF\bin\Debug\net10.0-windows\OxyPlot.Wpf.Shared.dll
